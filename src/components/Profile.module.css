@@ -1,0 +1,9 @@
+.content {
+    grid-area: c;
+    background-color: #e0e7e0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.item {
+    color: greenyellow;
+}
