@@ -1,9 +1,5 @@
 const SET_USER_DATA = 'SET_USER_DATA'
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 let initialState = {
   id: null,
   email: null,
