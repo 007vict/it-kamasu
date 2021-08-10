@@ -2,7 +2,14 @@
     padding: 10px;
 }
 
-.userPhoto {
+.profilePhoto{
     width: 100px;
     height: 100px;
+}
+
+.fileButton {
+    color: black;
+    padding: 8px 0px;
+    text-decoration: none;
+    border-radius: 10px;
 }
