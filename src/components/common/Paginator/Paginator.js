@@ -17,18 +17,18 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
 
   return <div className={styles.pagination}>
     {portionNumber > 1 &&
-    <a onClick={() => { setPortionNumber(portionNumber - 1)}}>PREV</a>}
-    {pages
-      .filter(p => p>=leftPortionPageNumber && p<=rightPortionPageNumber)
-      .map(p => {
-      return <a className={currentPage === p && styles.active}
-                   onClick={(e) => {
-                     onPageChanged(p)
-                   }}>{p}</a>
-    })
-    }
+    <button onClick={() => { setPortionNumber(portionNumber - 1)}}>PREV</button>}
+      {pages
+        .filter(p => p>=leftPortionPageNumber && p<=rightPortionPageNumber)
+        .map(p => {
+          return <a className={currentPage === p && styles.active}
+                    onClick={(e) => {
+                      onPageChanged(p)
+                    }}>{p}</a>
+        })
+      }
     { portionCount > portionNumber &&
-    <a onClick={() => { setPortionNumber(portionNumber + 1) }}>NEXT</a>
+    <button onClick={() => { setPortionNumber(portionNumber + 1) }}>NEXT</button>
     }
   </div>
 }
