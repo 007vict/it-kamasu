@@ -9,7 +9,11 @@
 
 .fileButton {
     color: black;
-    padding: 8px 0px;
+    padding-bottom: 4px;
     text-decoration: none;
     border-radius: 10px;
+}
+
+.contact {
+    padding-left: 10px;
 }
