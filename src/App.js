@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 import {compose} from "redux";
 import {connect, Provider} from "react-redux";
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -35,28 +35,36 @@ class App extends React.Component {
         <HeaderContainer/>
         <Navbar/>
         <div className='app-wrapper-content'>
-          <Route path='/profile/:userID?'
-                 render={ withSuspense(ProfileContainer)
-                 }
-          />
-          <Route path='/dialogs'
-                 render={() => {
-                   return <React.Suspense fallback={<Preloader />}>
-                     <DialogsContainer/>
-                   </React.Suspense>
-                 }}
-          />
-          <Route path='/users'
-                 render={() => <UsersContainer/>}
-          />
-          <Route path='/login'
-                 render={() => <LoginPage/>}
-          />
+          <Switch>
+            <Route exact path='/'
+                   render={ () => <Redirect from="/" to="/profile"/> }
+            />
+            <Route path='/profile/:userID?'
+                   render={withSuspense(ProfileContainer)
+                   }
+            />
+            <Route path='/dialogs'
+                   render={() => {
+                     return <React.Suspense fallback={<Preloader/>}>
+                       <DialogsContainer/>
+                     </React.Suspense>
+                   }}
+            />
+            <Route path='/users'
+                   render={() => <UsersContainer/>}
+            />
+            <Route path='/login'
+                   render={() => <LoginPage/>}
+            />
+            <Route path='*'
+                   render={() => <div>404 NOT FOUND</div>}
+            />
 
 
-          <Route path='/news' render={() => <News/>}/>
-          <Route path='/music' render={() => <Music/>}/>
-          <Route path='/settings' render={() => <Settings/>}/>
+            <Route path='/news' render={() => <News/>}/>
+            <Route path='/music' render={() => <Music/>}/>
+            <Route path='/settings' render={() => <Settings/>}/>
+          </Switch>
         </div>
       </div>
     );
